@@ -58,7 +58,7 @@
             <!-- Real Content / Skeleton wrapper -->
             <div class="d-flex justify-content-between align-items-end mb-4 pb-3 border-bottom">
                 <div>
-                    <h2 class="fw-bold mb-1">Hello, Sarah</h2>
+                    <h2 class="fw-bold mb-1" id="welcomeTitle">Hello, Sarah</h2>
                     <p class="text-muted mb-0">Welcome back to your dashboard.</p>
                 </div>
                 <a href="dashboard-book.html" class="btn btn-primary d-none d-md-inline-flex">Quick Book</a>
@@ -78,25 +78,25 @@
             </div>
 
             <!-- Real Content -->
-            <div class="real-content" style="display: none;">
+            <div class="real-content" id="userSummaryCards" style="display: none;">
                 <!-- Summary Cards -->
                 <div class="row g-4 mb-5">
                     <div class="col-md-6 col-lg-3">
                         <div class="bg-white p-4 rounded-4 shadow-sm border-start border-primary border-4 h-100">
-                            <h6 class="text-muted mb-2">Classes This Week</h6>
-                            <h3 class="fw-bold mb-0">3</h3>
+                            <h6 class="text-muted mb-2">Upcoming Classes</h6>
+                            <h3 class="fw-bold mb-0" id="statClassesThisWeek">0</h3>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <div class="bg-white p-4 rounded-4 shadow-sm h-100">
                             <h6 class="text-muted mb-2">Total Attended</h6>
-                            <h3 class="fw-bold mb-0">42</h3>
+                            <h3 class="fw-bold mb-0" id="statTotalAttended">0</h3>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
                         <div class="bg-white p-4 rounded-4 shadow-sm h-100">
                             <h6 class="text-muted mb-2">Membership Status</h6>
-                            <h4 class="fw-bold text-success mb-0">Active (Standard)</h4>
+                            <h6 class="fw-bold text-success mb-0" id="statMembershipStatus">Loading...</h6>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3">
@@ -120,29 +120,8 @@
                                     <th class="py-3 px-4 text-end">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="py-3 px-4">
-                                        <div class="fw-bold">Tomorrow</div>
-                                        <small class="text-muted">07:00 AM - 08:15 AM</small>
-                                    </td>
-                                    <td class="py-3 px-4">Dynamic Vinyasa</td>
-                                    <td class="py-3 px-4">Sarah Jenkins</td>
-                                    <td class="py-3 px-4 text-end">
-                                        <button type="button" class="btn btn-sm btn-outline-danger">Cancel</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4">
-                                        <div class="fw-bold">Friday, Oct 2</div>
-                                        <small class="text-muted">18:00 PM - 19:00 PM</small>
-                                    </td>
-                                    <td class="py-3 px-4">Yin Restore</td>
-                                    <td class="py-3 px-4">Kiran Rani</td>
-                                    <td class="py-3 px-4 text-end">
-                                        <button type="button" class="btn btn-sm btn-outline-danger">Cancel</button>
-                                    </td>
-                                </tr>
+                            <tbody id="upcomingBookingsTable">
+                                <!-- Dynamic upcoming bookings -->
                             </tbody>
                         </table>
                     </div>
@@ -157,6 +136,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/admin-data.js"></script>
+    <script src="../assets/js/user-dashboard.js"></script>
 </body>
 </html>

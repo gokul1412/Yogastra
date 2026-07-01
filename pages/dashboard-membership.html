@@ -61,15 +61,15 @@
                 </div>
             </div>
 
-            <div class="real-content" style="display: none;">
+            <div class="real-content" id="userMembershipProfile" style="display: none;">
                 <div class="row g-4 mb-5">
                     <!-- Current Plan -->
                     <div class="col-lg-8">
                         <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm h-100 position-relative border-start border-primary border-4">
-                            <span class="position-absolute top-0 end-0 m-4 badge bg-success px-3 py-2 rounded-pill">Active</span>
+                            <span class="position-absolute top-0 end-0 m-4 badge bg-success px-3 py-2 rounded-pill" id="userPlanStatus">Active</span>
                             
                             <h6 class="text-muted text-uppercase fw-bold mb-1">Current Plan</h6>
-                            <h2 class="display-6 fw-bold text-primary mb-4">Standard <span class="fs-4 text-muted fw-normal">($89/mo)</span></h2>
+                            <h2 class="display-6 fw-bold text-primary mb-4" id="userPlanName">Standard <span class="fs-4 text-muted fw-normal">($89/mo)</span></h2>
                             
                             <div class="row mb-4">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
@@ -162,6 +162,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/admin-data.js"></script>
+    <script src="../assets/js/user-dashboard.js"></script>
 </body>
 </html>

@@ -58,7 +58,7 @@
                 <div class="skeleton-box w-100 rounded-4" style="height: 400px;"></div>
             </div>
 
-            <div class="real-content" style="display: none;">
+            <div class="real-content" id="userClassHistory" style="display: none;">
                 <div class="bg-white rounded-4 shadow-sm overflow-hidden mb-4">
                     <div class="table-responsive">
                         <table class="table table-hover mb-0 align-middle">
@@ -71,65 +71,8 @@
                                     <th class="py-3 px-4">Status</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <!-- Upcoming -->
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Oct 2, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Yin Restore</td>
-                                    <td class="py-3 px-4 text-muted">Kiran Rani</td>
-                                    <td class="py-3 px-4 text-muted">60 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-warning-subtle text-warning-emphasis">Upcoming</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Oct 1, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Dynamic Vinyasa</td>
-                                    <td class="py-3 px-4 text-muted">Sarah Jenkins</td>
-                                    <td class="py-3 px-4 text-muted">75 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-warning-subtle text-warning-emphasis">Upcoming</span></td>
-                                </tr>
-                                <!-- Past -->
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Sep 28, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Hatha Foundation</td>
-                                    <td class="py-3 px-4 text-muted">David Chen</td>
-                                    <td class="py-3 px-4 text-muted">60 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-success-subtle text-success">Attended</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Sep 25, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Dynamic Vinyasa</td>
-                                    <td class="py-3 px-4 text-muted">Sarah Jenkins</td>
-                                    <td class="py-3 px-4 text-muted">75 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-success-subtle text-success">Attended</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Sep 22, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Mindful Meditation</td>
-                                    <td class="py-3 px-4 text-muted">Kiran Rani</td>
-                                    <td class="py-3 px-4 text-muted">45 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-danger-subtle text-danger">Missed</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Sep 20, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Hatha Foundation</td>
-                                    <td class="py-3 px-4 text-muted">David Chen</td>
-                                    <td class="py-3 px-4 text-muted">60 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-success-subtle text-success">Attended</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Sep 15, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Yin Restore</td>
-                                    <td class="py-3 px-4 text-muted">Kiran Rani</td>
-                                    <td class="py-3 px-4 text-muted">60 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-success-subtle text-success">Attended</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="py-3 px-4 text-nowrap">Sep 12, 2026</td>
-                                    <td class="py-3 px-4 fw-bold">Dynamic Vinyasa</td>
-                                    <td class="py-3 px-4 text-muted">Sarah Jenkins</td>
-                                    <td class="py-3 px-4 text-muted">75 Min</td>
-                                    <td class="py-3 px-4"><span class="badge bg-success-subtle text-success">Attended</span></td>
-                                </tr>
+                            <tbody id="userClassHistoryTable">
+                                <!-- Dynamic class history loads here -->
                             </tbody>
                         </table>
                     </div>
@@ -151,6 +94,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="../assets/js/admin-data.js"></script>
+    <script src="../assets/js/user-dashboard.js"></script>
 </body>
 </html>
