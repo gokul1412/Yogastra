@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.getElementById('userMembershipProfile')) {
             loadUserMembership();
         }
+        if (document.getElementById('userProfilePage')) {
+            loadUserFullProfile();
+        }
         
     }, 500); // Small delay to simulate loading for UX
 
@@ -242,7 +245,7 @@ function loadUserHistory() {
     }
     
     // Sort descending by date
-    userBookings.sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(b => {
+    userBookings.sort((a,b) => new Date(b.bookingDate) - new Date(a.bookingDate)).forEach(b => {
         const schedule = schedules.find(s => s.id === b.scheduleId);
         const cls = schedule ? classes.find(c => c.id === schedule.classId) : null;
         
@@ -281,23 +284,100 @@ function loadUserMembership() {
     const currentUser = members.find(m => m.id === CURRENT_USER_ID);
     
     if(currentUser) {
-        document.getElementById('userProfileName').value = currentUser.name || '';
-        document.getElementById('userProfileEmail').value = currentUser.email || '';
-        document.getElementById('userProfilePhone').value = currentUser.phone || '';
-        
         const planNameEl = document.getElementById('userPlanName');
         const planStatusEl = document.getElementById('userPlanStatus');
         
         if(planNameEl) planNameEl.textContent = `${currentUser.plan} Plan`;
         if(planStatusEl) planStatusEl.textContent = currentUser.status;
+        
+        loadUserBillingHistory();
     }
 }
 
-window.saveUserProfile = function() {
+function loadUserBillingHistory() {
+    const payments = YogastraData.getAll('payments');
+    // Filter payments for current user (Sarah Jenkins = MEM-001)
+    const userPayments = payments.filter(p => p.memberId === CURRENT_USER_ID);
+    
+    const tbody = document.getElementById('userBillingHistoryTable');
+    if(!tbody) return;
+    
+    tbody.innerHTML = '';
+    
+    if(userPayments.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 text-muted">No billing history found.</td></tr>`;
+        return;
+    }
+    
+    // Sort by date desc
+    userPayments.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    userPayments.forEach(payment => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td class="py-3 px-4">${new Date(payment.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'})}</td>
+            <td class="py-3 px-4">${payment.invoiceNumber} - ${payment.method}</td>
+            <td class="py-3 px-4 fw-bold">$${payment.amount.toFixed(2)}</td>
+            <td class="py-3 px-4 text-end">
+                <span class="badge ${payment.status === 'Completed' ? 'bg-success' : 'bg-warning'} me-2">${payment.status}</span>
+                <a href="#" class="text-primary" aria-label="Download invoice"><i class="fas fa-download"></i></a>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+
+
+// ==========================================
+// 5. Dedicated Profile Page Logic
+// ==========================================
+function loadUserFullProfile() {
     if (typeof YogastraData === 'undefined') return;
-    const name = document.getElementById('userProfileName').value;
-    const email = document.getElementById('userProfileEmail').value;
-    const phone = document.getElementById('userProfilePhone').value;
+    
+    const members = YogastraData.getAll('members');
+    const currentUser = members.find(m => m.id === CURRENT_USER_ID);
+    
+    if(currentUser) {
+        document.getElementById('userProfileNameFull').value = currentUser.name || '';
+        document.getElementById('userProfileEmailFull').value = currentUser.email || '';
+        document.getElementById('userProfilePhoneFull').value = currentUser.phone || '';
+        document.getElementById('userProfileAddress').value = currentUser.address || '';
+        document.getElementById('userProfileEmergency').value = currentUser.emergencyContact || '';
+        document.getElementById('userProfileMedical').value = currentUser.medicalInfo || '';
+        
+        document.getElementById('userProfileDisplayName').textContent = currentUser.name || '';
+        document.getElementById('userProfileDisplayEmail').textContent = currentUser.email || '';
+        
+        if (currentUser.image) {
+            document.getElementById('userProfileImagePreview').src = currentUser.image;
+        }
+        
+        // Handle image upload locally
+        const imageInput = document.getElementById('userProfileImageInput');
+        if(imageInput) {
+            imageInput.addEventListener('change', function(e) {
+                if(e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById('userProfileImagePreview').src = e.target.result;
+                    }
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        }
+    }
+}
+
+window.saveUserFullProfile = function() {
+    if (typeof YogastraData === 'undefined') return;
+    
+    const name = document.getElementById('userProfileNameFull').value;
+    const email = document.getElementById('userProfileEmailFull').value;
+    const phone = document.getElementById('userProfilePhoneFull').value;
+    const address = document.getElementById('userProfileAddress').value;
+    const emergency = document.getElementById('userProfileEmergency').value;
+    const medical = document.getElementById('userProfileMedical').value;
+    const imageSrc = document.getElementById('userProfileImagePreview').src;
     
     const members = YogastraData.getAll('members');
     const index = members.findIndex(m => m.id === CURRENT_USER_ID);
@@ -306,8 +386,15 @@ window.saveUserProfile = function() {
         members[index].name = name;
         members[index].email = email;
         members[index].phone = phone;
+        members[index].address = address;
+        members[index].emergencyContact = emergency;
+        members[index].medicalInfo = medical;
+        members[index].image = imageSrc;
         
         localStorage.setItem('yogastra_members', JSON.stringify(members));
-        showUserToast('Profile updated successfully!');
+        showUserToast('Profile details updated successfully!');
+        
+        document.getElementById('userProfileDisplayName').textContent = name;
+        document.getElementById('userProfileDisplayEmail').textContent = email;
     }
 };

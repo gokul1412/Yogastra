@@ -1,10 +1,10 @@
 const sampleData = {
     members: [
-        { id: "MEM-001", name: "Emma Watson", email: "emma@example.com", phone: "+1 234 567 8901", address: "123 Yoga St, NY", plan: "Premium", status: "Active", joinedDate: "2026-01-15", emergencyContact: "John Watson (+1 987 654 3210)", medicalInfo: "None", image: "https://ui-avatars.com/api/?name=Emma+Watson&background=random" },
-        { id: "MEM-002", name: "James Bond", email: "james@example.com", phone: "+1 234 567 8902", address: "456 Spy Way, LDN", plan: "Standard", status: "Active", joinedDate: "2026-02-02", emergencyContact: "M (+44 123 456 7890)", medicalInfo: "Minor shoulder pain", image: "https://ui-avatars.com/api/?name=James+Bond&background=random" },
-        { id: "MEM-003", name: "Lucy Liu", email: "lucy@example.com", phone: "+1 234 567 8903", address: "789 Action Ave, LA", plan: "Basic", status: "Inactive", joinedDate: "2026-03-10", emergencyContact: "Jane Doe (+1 555 123 4567)", medicalInfo: "Asthma", image: "https://ui-avatars.com/api/?name=Lucy+Liu&background=random" },
-        { id: "MEM-004", name: "Chris Evans", email: "chris@example.com", phone: "+1 234 567 8904", address: "101 Cap St, NY", plan: "Premium", status: "Active", joinedDate: "2026-04-12", emergencyContact: "Bucky Barnes (+1 999 888 7777)", medicalInfo: "None", image: "https://ui-avatars.com/api/?name=Chris+Evans&background=random" },
-        { id: "MEM-005", name: "Scarlett Johansson", email: "scarlett@example.com", phone: "+1 234 567 8905", address: "202 Widow Ln, RU", plan: "Standard", status: "Active", joinedDate: "2026-05-20", emergencyContact: "Natasha Romanoff (+1 444 555 6666)", medicalInfo: "None", image: "https://ui-avatars.com/api/?name=Scarlett+Johansson&background=random" }
+        { id: "MEM-001", name: "Sarah Jenkins", email: "sarah@example.com", phone: "+1 234 567 8901", address: "123 Serenity Lane, NY", plan: "Standard", status: "Active", joinedDate: "2025-06-15", emergencyContact: "Mark Jenkins (+1 987 654 3210)", medicalInfo: "Recovering from mild shoulder strain", image: "https://ui-avatars.com/api/?name=Sarah+Jenkins&background=random" },
+        { id: "MEM-002", name: "Michael Chen", email: "michael@example.com", phone: "+1 234 567 8902", address: "456 Lotus Way, LDN", plan: "Premium", status: "Active", joinedDate: "2026-02-02", emergencyContact: "Elena Chen (+44 123 456 7890)", medicalInfo: "Tight hamstrings", image: "https://ui-avatars.com/api/?name=Michael+Chen&background=random" },
+        { id: "MEM-003", name: "Priya Sharma", email: "priya@example.com", phone: "+1 234 567 8903", address: "789 Prana Ave, LA", plan: "Basic", status: "Inactive", joinedDate: "2026-03-10", emergencyContact: "Rahul Sharma (+1 555 123 4567)", medicalInfo: "Asthma", image: "https://ui-avatars.com/api/?name=Priya+Sharma&background=random" },
+        { id: "MEM-004", name: "David Rodriguez", email: "david@example.com", phone: "+1 234 567 8904", address: "101 Zen St, NY", plan: "Premium", status: "Active", joinedDate: "2026-04-12", emergencyContact: "Maria Rodriguez (+1 999 888 7777)", medicalInfo: "None", image: "https://ui-avatars.com/api/?name=David+Rodriguez&background=random" },
+        { id: "MEM-005", name: "Aisha Patel", email: "aisha@example.com", phone: "+1 234 567 8905", address: "202 Asana Ln, RU", plan: "Standard", status: "Active", joinedDate: "2026-05-20", emergencyContact: "Samir Patel (+1 444 555 6666)", medicalInfo: "None", image: "https://ui-avatars.com/api/?name=Aisha+Patel&background=random" }
     ],
     trainers: [
         { id: "TRN-001", name: "Arjun Singh", email: "arjun@yogastra.com", phone: "+1 555 111 2222", specialization: "Hatha Yoga", experience: "8 Years", certifications: "RYT 500", workingDays: ["Mon", "Wed", "Fri"], status: "Active", image: "https://ui-avatars.com/api/?name=Arjun+Singh&background=random" },
@@ -21,12 +21,16 @@ const sampleData = {
         { id: "SCH-001", classId: "CLS-001", trainerId: "TRN-001", date: "2026-07-02", time: "07:00 AM", room: "Studio A", status: "Scheduled" },
         { id: "SCH-002", classId: "CLS-002", trainerId: "TRN-002", date: "2026-07-02", time: "09:00 AM", room: "Studio B", status: "Scheduled" },
         { id: "SCH-003", classId: "CLS-003", trainerId: "TRN-003", date: "2026-07-03", time: "06:00 AM", room: "Studio A", status: "Cancelled" },
-        { id: "SCH-004", classId: "CLS-001", trainerId: "TRN-001", date: "2026-07-04", time: "08:00 AM", room: "Studio C", status: "Scheduled" }
+        { id: "SCH-004", classId: "CLS-001", trainerId: "TRN-001", date: "2026-07-04", time: "08:00 AM", room: "Studio C", status: "Scheduled" },
+        { id: "SCH-005", classId: "CLS-002", trainerId: "TRN-002", date: "2026-06-25", time: "09:00 AM", room: "Studio B", status: "Completed" },
+        { id: "SCH-006", classId: "CLS-001", trainerId: "TRN-001", date: "2026-06-28", time: "07:00 AM", room: "Studio A", status: "Completed" }
     ],
     bookings: [
         { id: "BKG-001", memberId: "MEM-001", classId: "CLS-001", scheduleId: "SCH-001", bookingDate: "2026-07-01", status: "Confirmed", paymentStatus: "Paid" },
         { id: "BKG-002", memberId: "MEM-002", classId: "CLS-002", scheduleId: "SCH-002", bookingDate: "2026-07-01", status: "Confirmed", paymentStatus: "Pending" },
-        { id: "BKG-003", memberId: "MEM-004", classId: "CLS-001", scheduleId: "SCH-001", bookingDate: "2026-07-01", status: "Cancelled", paymentStatus: "Refunded" }
+        { id: "BKG-003", memberId: "MEM-004", classId: "CLS-001", scheduleId: "SCH-001", bookingDate: "2026-07-01", status: "Cancelled", paymentStatus: "Refunded" },
+        { id: "BKG-004", memberId: "MEM-001", classId: "CLS-002", scheduleId: "SCH-005", bookingDate: "2026-06-20", status: "Attended", paymentStatus: "Paid" },
+        { id: "BKG-005", memberId: "MEM-001", classId: "CLS-001", scheduleId: "SCH-006", bookingDate: "2026-06-25", status: "Attended", paymentStatus: "Paid" }
     ],
     attendance: [
         { id: "ATT-001", scheduleId: "SCH-001", date: "2026-07-02", memberId: "MEM-001", status: "Present" },
@@ -98,9 +102,17 @@ const YogastraData = {
             }
         }
 
-        if (!localStorage.getItem('yogastra_initialized') || seededMissingData) {
-            localStorage.setItem('yogastra_initialized', 'true');
+        if (!localStorage.getItem('yogastra_initialized_v3') || seededMissingData) {
+            localStorage.setItem('yogastra_initialized_v3', 'true');
             console.log('Sample data initialized in LocalStorage.');
+            
+            // If v1/v2 exists, clear everything so v3 takes effect cleanly
+            if (localStorage.getItem('yogastra_initialized') || localStorage.getItem('yogastra_initialized_v2')) {
+                const keepV3 = localStorage.getItem('yogastra_initialized_v3');
+                localStorage.clear();
+                localStorage.setItem('yogastra_initialized_v3', keepV3);
+                location.reload();
+            }
         }
     },
     
