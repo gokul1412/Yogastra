@@ -2,6 +2,33 @@ document.addEventListener('DOMContentLoaded', () => {
     // Determine which page we are on based on URL or DOM elements
     const path = window.location.pathname;
     
+    // Sidebar Mobile Toggle Logic
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebarClose = document.getElementById('sidebar-close');
+    const sidebar = document.getElementById('dashboard-sidebar');
+    const overlay = document.getElementById('dashboard-overlay');
+    
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.add('show');
+            if (overlay) overlay.classList.add('show');
+        });
+    }
+    
+    if (sidebarClose && sidebar) {
+        sidebarClose.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            if (overlay) overlay.classList.remove('show');
+        });
+    }
+    
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        });
+    }
+    
     // Hide all skeleton loaders and show real content on load
     const skeletons = document.querySelectorAll('.skeleton-content');
     const realContents = document.querySelectorAll('.real-content');
