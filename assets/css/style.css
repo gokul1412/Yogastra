@@ -640,3 +640,38 @@ RESPONSIVE ADJUSTMENTS
   }
 }
 
+@media (max-width: 767.98px) {
+  .dashboard-main {
+    padding: 1.25rem 1rem !important; /* Reduce padding on mobile */
+  }
+
+  /* Fix overlapping absolute badges on mobile cards */
+  .position-relative > .position-absolute.top-0.end-0 {
+    position: relative !important;
+    display: inline-block;
+    margin: 0 0 1rem 0 !important;
+    inset: auto !important;
+  }
+
+  /* Stack header elements properly on small screens */
+  .dashboard-main .d-flex.justify-content-between.align-items-end {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 1rem;
+  }
+  
+  .dashboard-main .d-flex.justify-content-between.align-items-end .btn {
+    width: 100%; /* Make action buttons full width */
+  }
+
+  /* Make filters full width */
+  .form-select.w-auto {
+    width: 100% !important;
+  }
+  
+  /* Reduce heading sizes slightly */
+  .display-6 {
+    font-size: 2rem;
+  }
+}
+
